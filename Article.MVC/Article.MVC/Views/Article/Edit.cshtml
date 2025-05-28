@@ -1,0 +1,435 @@
+﻿@model Article.MVC.Models.DomainModels.ArticlePost
+
+@{
+    ViewData["Title"] = "Edit Article";
+}
+
+<div class="article-edit-container">
+    <div class="edit-header">
+        <div class="header-content">
+            <h1><i class="fas fa-edit"></i> Edit Article</h1>
+            <p class="subtitle">Update your article content and metadata</p>
+        </div>
+        <div class="header-actions">
+            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-preview">
+                <i class="fas fa-eye"></i> Preview
+            </a>
+        </div>
+    </div>
+
+    <form asp-action="Edit" class="article-edit-form" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-grid">
+            <!-- Main Content Column -->
+            <div class="content-column">
+                <div class="form-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-heading"></i> Article Content</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label asp-for="Title" class="form-label">
+                                <i class="fas fa-heading"></i> Title
+                                <span class="required">*</span>
+                            </label>
+                            <textarea asp-for="Title" class="form-control" placeholder="Enter a compelling title" required>@Model.Title</textarea>
+                            <span asp-validation-for="Title" class="validation-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Content" class="form-label">
+                                <i class="fas fa-align-left"></i> Content
+                                <span class="required">*</span>
+                            </label>
+                            <textarea asp-for="Content" id="contentEditor" required>@Model.Content</textarea>
+                            <span asp-validation-for="Content" class="validation-error"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Column -->
+            <div class="sidebar-column">
+                <!-- Publishing Card -->
+                <div class="form-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-calendar-alt"></i> Publishing</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label asp-for="PublishedAt" class="form-label">
+                                <i class="far fa-calendar"></i> Publish Date
+                            </label>
+                            <input asp-for="PublishedAt" class="form-control" type="datetime-local" />
+                            <span asp-validation-for="PublishedAt" class="validation-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="UpdatedAt" class="form-label">
+                                <i class="fas fa-sync-alt"></i> Last Updated
+                            </label>
+                            <input asp-for="UpdatedAt" class="form-control" type="datetime-local"
+                                   value="@DateTime.Now.ToString()" readonly />
+                            <span asp-validation-for="UpdatedAt" class="validation-error"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Image Card -->
+                <div class="form-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-image"></i> Featured Image</h3>
+                    </div>
+                    <div class="card-body">
+                        @if (!string.IsNullOrEmpty(Model.ImagePath))
+                        {
+                            <div class="current-image-container">
+                                <img src="@Model.ImagePath" class="current-image" alt="Current featured image" />
+                                <div class="image-actions">
+                                    <label class="image-toggle">
+                                        <input type="checkbox" id="removeImage" name="removeImage">
+                                        <span class="toggle-slider"></span>
+                                        <span class="toggle-label">Remove Image</span>
+                                    </label>
+                                </div>
+                            </div>
+                        }
+
+                        <div class="file-upload">
+                            <label class="upload-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Choose new image</span>
+                                <input type="file" id="imageUpload" name="imageFile" accept="image/*" class="upload-input">
+                            </label>
+                            <div class="image-preview" id="imagePreview">
+                                <img id="previewImage" src="#" alt="Preview" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card -->
+                <div class="form-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-video"></i> Featured Video</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label asp-for="VideoUrl" class="form-label">
+                                <i class="fas fa-link"></i> Video URL
+                            </label>
+                            <input asp-for="VideoUrl" class="form-control" placeholder="https://youtube.com/watch?v=..." />
+                            <span asp-validation-for="VideoUrl" class="validation-error"></span>
+                            @if (!string.IsNullOrEmpty(Model.VideoUrl))
+                            {
+                                <div class="video-test">
+                                    <a href="@Model.VideoUrl" target="_blank" class="btn btn-test">
+                                        <i class="fas fa-play"></i> Test Video Link
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-save">
+                <i class="fas fa-save"></i> Save Changes
+            </button>
+            <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-cancel">
+                <i class="fas fa-times"></i> Cancel
+            </a>
+        </div>
+    </form>
+</div>
+
+@section Styles {
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <style>
+        /* === RESET & BASE STYLES === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background-color: #f9f9fb;
+            color: #1f1f1f;
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* === DARK MODE === */
+        @@media (prefers-color-scheme: dark) {
+            body
+
+        {
+            background-color: #121212;
+            color: #f5f5f5;
+        }
+
+        header,
+        footer {
+            background-color: #1e1e1e;
+        }
+
+        nav a {
+            color: #f0f0f0;
+        }
+
+            nav a:hover {
+                color: #00bcd4;
+            }
+
+        .card {
+            background-color: #1c1c1c;
+            border: 1px solid #333;
+        }
+
+            .card:hover {
+                box-shadow: 0 8px 24px rgba(0, 255, 255, 0.1);
+            }
+
+        .btn-primary {
+            background-color: #00bcd4;
+            color: #121212;
+        }
+
+            .btn-primary:hover {
+                background-color: #0097a7;
+            }
+
+        }
+
+        /* === TYPOGRAPHY === */
+        h1, h2, h3 {
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* === HEADER === */
+        header {
+            background-color: #ffffff;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* === NAVIGATION === */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            nav a {
+                text-decoration: none;
+                color: #333;
+                font-weight: 500;
+                margin-left: 1.5rem;
+                position: relative;
+                transition: color 0.3s ease;
+            }
+
+                nav a::after {
+                    content: '';
+                    display: block;
+                    width: 0;
+                    height: 2px;
+                    background: #00bcd4;
+                    transition: width 0.3s ease;
+                    position: absolute;
+                    bottom: -4px;
+                    left: 0;
+                }
+
+                nav a:hover::after {
+                    width: 100%;
+                }
+
+        /* === MAIN === */
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* === ARTICLES / CARDS === */
+        .card {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+            .card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+            }
+
+            .card h2 {
+                color: #007acc;
+            }
+
+            .card p {
+                color: #444;
+            }
+
+        /* === BUTTONS === */
+        .btn-primary {
+            background-color: #007acc;
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .btn-primary:hover {
+                background-color: #005fa3;
+                transform: scale(1.05);
+            }
+
+        /* === FOOTER === */
+        footer {
+            background-color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            border-top: 1px solid #ddd;
+            margin-top: 4rem;
+        }
+
+        /* === RESPONSIVE === */
+        @@media (max-width: 768px) {
+            nav
+
+        {
+            flex-direction: column;
+        }
+
+        nav a {
+            margin: 0.5rem 0;
+        }
+
+        main {
+            padding: 1rem;
+        }
+
+        }
+    </style>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="https://cdn.ckeditor.com/4.16.2/full-all/ckeditor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        // Initialize CKEditor with enhanced configuration
+        CKEDITOR.replace('contentEditor', {
+            extraPlugins: 'autogrow,filebrowser,image2,uploadimage',
+            removePlugins: 'resize',
+            autoGrow_minHeight: 300,
+            autoGrow_maxHeight: 800,
+            autoGrow_bottomSpace: 50,
+            filebrowserUploadUrl: '/Upload/UploadImage',
+            filebrowserBrowseUrl: '/Upload/BrowseImages',
+            toolbar: [
+                { name: 'document', items: ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates'] },
+                { name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] },
+                { name: 'editing', items: ['Find', 'Replace', '-', 'SelectAll', '-', 'Scayt'] },
+                { name: 'forms', items: ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'] },
+                '/',
+                { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting', 'RemoveFormat'] },
+                { name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'] },
+                { name: 'links', items: ['Link', 'Unlink', 'Anchor'] },
+                { name: 'insert', items: ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'] },
+                '/',
+                { name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize'] },
+                { name: 'colors', items: ['TextColor', 'BGColor'] },
+                { name: 'tools', items: ['Maximize', 'ShowBlocks'] },
+                { name: 'about', items: ['About'] }
+            ],
+            skin: 'moono-lisa',
+            contentsCss: ['/css/ckeditor-content.css'],
+            height: '500px',
+            removeDialogTabs: 'image:advanced;link:advanced',
+            format_tags: 'p;h1;h2;h3;pre',
+            removeButtons: 'Underline,Subscript,Superscript',
+            extraAllowedContent: '*(*);*{*}',
+            enterMode: CKEDITOR.ENTER_BR,
+            shiftEnterMode: CKEDITOR.ENTER_P,
+            autoParagraph: false,
+            fillEmptyBlocks: false
+        });
+
+        // Image preview functionality
+        document.getElementById('imageUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const preview = document.getElementById('previewImage');
+            const previewDiv = document.getElementById('imagePreview');
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    previewDiv.style.display = 'block';
+                }
+
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "#";
+                previewDiv.style.display = 'none';
+            }
+        });
+
+        // Set UpdatedAt to current datetime when form is submitted
+        document.querySelector('form').addEventListener('submit', function() {
+            document.getElementById('UpdatedAt').value = new Date().toISOString().slice(0, 16);
+        });
+
+        // Form validation
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                var forms = document.getElementsByClassName('article-edit-form');
+                Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+}

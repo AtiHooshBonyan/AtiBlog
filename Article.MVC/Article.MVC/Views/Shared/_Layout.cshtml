@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Article Viewer</title>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+          selector: '#mytextarea'
+        });
+    </script>
+    @RenderSection("Styles", required: false)
+
+</head>
+<body>
+    <header>
+        <a href="#" class="logo" id="homeLink">
+            <i class="fas fa-book-open"></i>
+            ArticleHub
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active" id="articlesLink">Articles</a></li>
+                <li><a href="#" id="categoriesLink">Categories</a></li>
+                <li><a href="#" id="aboutLink">About</a></li>
+                <li> <a id="add-btn" href="@Url.Action("Index", "Article")" class="form-buttons">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div id="main-content">
+            <section class="hero">
+                <h1>Discover & Share Amazing Articles</h1>
+                <p>Explore a wide range of topics from technology to lifestyle. Join our community of readers and writers today.</p>
+                
+            </section>
+            <main>
+                <div id="loading">Loading articles...</div>
+                <div id="error" style="display:none;"></div>
+                <ul id="article-list" class="article-list" style="display:none;"></ul>
+            </main>
+
+            <div id="article-detail" aria-hidden="true">
+                <button class="close-btn" aria-label="Close article details">&times;</button>
+                <h2 id="detail-title"></h2>
+                <p id="detail-content"></p>
+            </div>
+            <div class="container">
+                @RenderBody()
+
+            </div>
+        </div>
+    </div>
+   
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    @* <script src="~/js/script.js"></script> *@
+</body>
+
+</html>
+

@@ -1,0 +1,95 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Ati1\\Desktop\\Tina\\AtiBlog\\Article.MVC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1B447687-246C-4F1D-B664-6871CC8E41A0}|Article.MVC\\Article.MVC.csproj|c:\\users\\ati1\\desktop\\tina\\atiblog\\article.mvc\\article.mvc\\views\\article\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1B447687-246C-4F1D-B664-6871CC8E41A0}|Article.MVC\\Article.MVC.csproj|solutionrelative:article.mvc\\views\\article\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B447687-246C-4F1D-B664-6871CC8E41A0}|Article.MVC\\Article.MVC.csproj|c:\\users\\ati1\\desktop\\tina\\atiblog\\article.mvc\\article.mvc\\views\\article\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1B447687-246C-4F1D-B664-6871CC8E41A0}|Article.MVC\\Article.MVC.csproj|solutionrelative:article.mvc\\views\\article\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B447687-246C-4F1D-B664-6871CC8E41A0}|Article.MVC\\Article.MVC.csproj|c:\\users\\ati1\\desktop\\tina\\atiblog\\article.mvc\\article.mvc\\repositories\\articlepostsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1B447687-246C-4F1D-B664-6871CC8E41A0}|Article.MVC\\Article.MVC.csproj|solutionrelative:article.mvc\\repositories\\articlepostsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1B447687-246C-4F1D-B664-6871CC8E41A0}|Article.MVC\\Article.MVC.csproj|c:\\users\\ati1\\desktop\\tina\\atiblog\\article.mvc\\article.mvc\\views\\article\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1B447687-246C-4F1D-B664-6871CC8E41A0}|Article.MVC\\Article.MVC.csproj|solutionrelative:article.mvc\\views\\article\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 209,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{7d1a5679-04f2-3f4a-851f-855baa54731c}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ati1\\Desktop\\Tina\\AtiBlog\\Article.MVC\\Article.MVC\\Views\\Article\\Details.cshtml",
+              "RelativeDocumentMoniker": "Article.MVC\\Views\\Article\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Ati1\\Desktop\\Tina\\AtiBlog\\Article.MVC\\Article.MVC\\Views\\Article\\Details.cshtml",
+              "RelativeToolTip": "Article.MVC\\Views\\Article\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-28T11:38:52.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ArticlePostsRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Ati1\\Desktop\\Tina\\AtiBlog\\Article.MVC\\Article.MVC\\Repositories\\ArticlePostsRepository.cs",
+              "RelativeDocumentMoniker": "Article.MVC\\Repositories\\ArticlePostsRepository.cs",
+              "ToolTip": "C:\\Users\\Ati1\\Desktop\\Tina\\AtiBlog\\Article.MVC\\Article.MVC\\Repositories\\ArticlePostsRepository.cs",
+              "RelativeToolTip": "Article.MVC\\Repositories\\ArticlePostsRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T10:27:45.147Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ati1\\Desktop\\Tina\\AtiBlog\\Article.MVC\\Article.MVC\\Views\\Article\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Article.MVC\\Views\\Article\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\Ati1\\Desktop\\Tina\\AtiBlog\\Article.MVC\\Article.MVC\\Views\\Article\\Edit.cshtml",
+              "RelativeToolTip": "Article.MVC\\Views\\Article\\Edit.cshtml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAEoAAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-28T10:24:23.683Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ati1\\Desktop\\Tina\\AtiBlog\\Article.MVC\\Article.MVC\\Views\\Article\\Create.cshtml",
+              "RelativeDocumentMoniker": "Article.MVC\\Views\\Article\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Ati1\\Desktop\\Tina\\AtiBlog\\Article.MVC\\Article.MVC\\Views\\Article\\Create.cshtml*",
+              "RelativeToolTip": "Article.MVC\\Views\\Article\\Create.cshtml*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-28T10:22:37.204Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
